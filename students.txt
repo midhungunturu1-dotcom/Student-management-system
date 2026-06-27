@@ -1,0 +1,2 @@
+Ava Patel|101|A|Computer Science|ava@example.com|9876543210
+Noah Chen|102|A+|Information Technology|noah@example.com|9123456789

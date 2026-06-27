@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-card glass-card">
+        <div>
+          <p class="eyebrow">Student Management System</p>
+          <h1>Manage every student journey with clarity and style.</h1>
+          <p>
+            Track academic records, search instantly, and keep your campus data organized from one polished dashboard.
+          </p>
+        </div>
+        <button id="themeToggle" class="theme-btn" type="button">🌙 Dark Mode</button>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat-card glass-card">
+          <div class="stat-icon">🎓</div>
+          <div>
+            <h3 id="totalStudents">0</h3>
+            <p>Total Students</p>
+          </div>
+        </article>
+        <article class="stat-card glass-card">
+          <div class="stat-icon">🔎</div>
+          <div>
+            <h3 id="visibleStudents">0</h3>
+            <p>Visible Records</p>
+          </div>
+        </article>
+        <article class="stat-card glass-card">
+          <div class="stat-icon">⚡</div>
+          <div>
+            <h3 id="statusBadge">Ready</h3>
+            <p>System Status</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="glass-card form-card">
+          <div class="card-title">
+            <h2>Student Form</h2>
+            <span>Enter or edit details</span>
+          </div>
+
+          <form id="studentForm" novalidate>
+            <div class="field-grid">
+              <label class="field">
+                <span>Student Name</span>
+                <input id="name" name="name" type="text" placeholder="Ava Patel" required />
+              </label>
+
+              <label class="field">
+                <span>Roll Number</span>
+                <input id="rollNumber" name="rollNumber" type="number" placeholder="101" required />
+              </label>
+
+              <label class="field">
+                <span>Grade</span>
+                <input id="grade" name="grade" type="text" placeholder="A" required />
+              </label>
+
+              <label class="field">
+                <span>Department</span>
+                <input id="department" name="department" type="text" placeholder="Computer Science" required />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input id="email" name="email" type="email" placeholder="student@example.com" required />
+              </label>
+
+              <label class="field">
+                <span>Phone Number</span>
+                <input id="phoneNumber" name="phoneNumber" type="text" placeholder="9876543210" required />
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="primary-btn">Add Student</button>
+              <button id="updateBtn" type="button" class="secondary-btn" disabled>Update Student</button>
+              <button id="deleteBtn" type="button" class="danger-btn" disabled>Delete Student</button>
+              <button id="resetBtn" type="button" class="ghost-btn">Reset Form</button>
+            </div>
+
+            <output id="formAlert" class="alert"></output>
+          </form>
+        </div>
+
+        <div class="glass-card controls-card">
+          <div class="card-title">
+            <h2>Search & Actions</h2>
+            <span>Filter and manage records</span>
+          </div>
+
+          <div class="search-group">
+            <label class="field">
+              <span>Search by Roll Number</span>
+              <input id="searchRoll" type="text" placeholder="e.g. 101" />
+            </label>
+            <label class="field">
+              <span>Search by Name</span>
+              <input id="searchName" type="text" placeholder="e.g. Ava" />
+            </label>
+            <button id="searchBtn" type="button" class="primary-btn">Search Student</button>
+            <button id="displayAllBtn" type="button" class="ghost-btn">Display All Students</button>
+          </div>
+
+          <div class="filter-group">
+            <label class="field">
+              <span>Filter by Grade</span>
+              <select id="gradeFilter">
+                <option value="">All Grades</option>
+                <option value="A">A</option>
+                <option value="A+">A+</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Filter by Department</span>
+              <select id="departmentFilter">
+                <option value="">All Departments</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Business">Business</option>
+                <option value="Electronics">Electronics</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="action-grid">
+            <button id="saveBtn" type="button" class="secondary-btn">Save Records</button>
+            <button id="loadBtn" type="button" class="secondary-btn">Load Records</button>
+            <button id="exportBtn" type="button" class="secondary-btn">Export CSV</button>
+            <button id="importBtn" type="button" class="secondary-btn">Import CSV</button>
+            <button id="printBtn" type="button" class="secondary-btn">Print List</button>
+          </div>
+
+          <label class="sr-only" for="importFile">Import CSV file</label>
+          <input id="importFile" type="file" accept=".csv" hidden />
+        </div>
+      </section>
+
+      <section class="glass-card table-card">
+        <div class="card-title">
+          <h2>Student Records</h2>
+          <span id="tableSummary">Loading records...</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Grade</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
